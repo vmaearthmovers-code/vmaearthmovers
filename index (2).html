@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="VMA Earth Movers - Earth Excavation, M Sand, P Sand, Bricks, Centring, Concrete Machine. Call +91 8122165018">
+<title>VMA Earth Movers</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:#f4f4f4;color:#222;}
+
+  /* NAV */
+  nav{background:#0a2240;display:flex;justify-content:space-between;align-items:center;padding:0 20px;flex-wrap:wrap;position:sticky;top:0;z-index:100;}
+  .nav-brand{color:#f0a500;font-size:14px;font-weight:700;letter-spacing:2px;padding:14px 0;}
+  .nav-links{display:flex;flex-wrap:wrap;}
+  .nav-links a{color:rgba(255,255,255,0.75);font-size:12px;font-weight:600;padding:14px 14px;text-decoration:none;border-bottom:2px solid transparent;transition:all 0.2s;}
+  .nav-links a:hover{color:#f0a500;border-bottom-color:#f0a500;}
+
+  /* HERO */
+  .hero{background:#0f3460;min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 1.5rem;text-align:center;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(240,165,0,0.03) 0,rgba(240,165,0,0.03) 1px,transparent 1px,transparent 40px);}
+  .hero-logo{font-size:11px;font-weight:700;color:#f0a500;letter-spacing:5px;text-transform:uppercase;margin-bottom:0.75rem;animation:fadeD 0.8s ease both;}
+  .hero h1{font-size:clamp(28px,6vw,52px);font-weight:700;color:#fff;line-height:1.2;animation:fadeD 0.9s ease both;}
+  .hero h1 span{color:#f0a500;}
+  .hero-sub{font-size:15px;color:rgba(255,255,255,0.65);margin-top:0.75rem;max-width:520px;animation:fadeD 1s ease both;}
+  .hero-badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:1.5rem;animation:fadeU 1.1s ease both;}
+  .badge{background:rgba(240,165,0,0.15);border:1px solid rgba(240,165,0,0.4);color:#f0a500;font-size:12px;padding:6px 14px;border-radius:20px;font-weight:600;}
+  .hero-btns{display:flex;gap:12px;margin-top:2rem;flex-wrap:wrap;justify-content:center;animation:fadeU 1.2s ease both;}
+  .btn-gold{background:#f0a500;color:#fff;border:none;padding:13px 28px;border-radius:25px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:background 0.2s;}
+  .btn-gold:hover{background:#c17f00;}
+  .btn-out{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.5);padding:12px 26px;border-radius:25px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s;}
+  .btn-out:hover{border-color:#f0a500;color:#f0a500;}
+  .hero-float{position:absolute;right:5%;bottom:10%;font-size:120px;opacity:0.1;animation:float 4s ease-in-out infinite;}
+
+  /* SECTIONS */
+  .sec{padding:3rem 1.5rem;}
+  .sec-title{text-align:center;font-size:clamp(20px,4vw,28px);font-weight:700;color:#1a1a1a;margin-bottom:0.4rem;}
+  .sec-title span{color:#f0a500;}
+  .sec-sub{text-align:center;font-size:13px;color:#666;margin-bottom:2rem;}
+
+  /* SERVICES SLIDER */
+  .slider-outer{position:relative;overflow:hidden;padding:0 40px 1rem;}
+  .slider-track{display:flex;gap:16px;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);}
+  .scard{flex:0 0 220px;background:#fff;border:1px solid #e8e8e8;border-radius:14px;padding:1.4rem 1.1rem;position:relative;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;}
+  .scard::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#f0a500,#ff6b35);}
+  .scard:hover{transform:translateY(-8px);box-shadow:0 16px 32px rgba(240,165,0,0.18);}
+  .scard-icon{font-size:34px;margin-bottom:0.75rem;display:block;}
+  .scard-title{font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:0.4rem;}
+  .scard-desc{font-size:12px;color:#666;line-height:1.6;}
+  .scard-tag{display:inline-block;margin-top:0.75rem;font-size:11px;background:rgba(240,165,0,0.12);color:#a06800;padding:3px 10px;border-radius:12px;font-weight:700;}
+  .sbtn{position:absolute;top:50%;transform:translateY(-50%);background:#f0a500;border:none;color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;z-index:10;transition:background 0.2s;}
+  .sbtn:hover{background:#c17f00;}
+  .sbtn.l{left:4px;} .sbtn.r{right:4px;}
+  .dots{display:flex;gap:6px;justify-content:center;margin-top:1rem;}
+  .dot{width:8px;height:8px;border-radius:50%;background:#ddd;cursor:pointer;transition:background 0.2s;}
+  .dot.active{background:#f0a500;}
+
+  /* STATS */
+  .stats{background:linear-gradient(135deg,#0f3460,#16213e);display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));}
+  .stat{padding:2rem 1rem;text-align:center;border-right:1px solid rgba(255,255,255,0.08);}
+  .stat-num{font-size:32px;font-weight:700;color:#f0a500;display:block;}
+  .stat-lbl{font-size:12px;color:rgba(255,255,255,0.6);margin-top:4px;}
+
+  /* WHY */
+  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;}
+  .why-card{background:#fff;border:1px solid #eee;border-radius:14px;padding:1.25rem;text-align:center;transition:transform 0.2s,box-shadow 0.2s;}
+  .why-card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,0.08);}
+  .why-icon{width:48px;height:48px;background:rgba(240,165,0,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 10px;}
+  .why-lbl{font-size:13px;font-weight:700;color:#1a1a1a;}
+  .why-sub{font-size:11px;color:#888;margin-top:4px;}
+
+  /* CONTACT */
+  .contact-sec{background:#f0f4f8;padding:3rem 1.5rem;}
+  .contact-wrap{max-width:600px;margin:0 auto;}
+  .contact-card{background:#fff;border-radius:16px;padding:2rem;border:1px solid #e0e0e0;}
+  .contact-head{display:flex;align-items:center;gap:14px;margin-bottom:1.5rem;padding-bottom:1.25rem;border-bottom:1px solid #eee;}
+  .contact-avatar{width:52px;height:52px;border-radius:50%;background:#f0a500;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#fff;flex-shrink:0;}
+  .contact-name{font-size:16px;font-weight:700;color:#1a1a1a;}
+  .contact-sub2{font-size:12px;color:#888;margin-top:3px;}
+  .big-btns{display:flex;flex-direction:column;gap:12px;margin-bottom:1.5rem;}
+  .big-btn{display:flex;align-items:center;gap:14px;padding:15px 18px;border-radius:12px;text-decoration:none;font-size:15px;font-weight:700;transition:opacity 0.2s;border:none;cursor:pointer;width:100%;}
+  .big-btn:hover{opacity:0.88;}
+  .big-btn-call{background:#f0a500;color:#fff;}
+  .big-btn-wa{background:#25D366;color:#fff;}
+  .big-btn-icon{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+  .big-btn-label{font-size:14px;font-weight:700;display:block;}
+  .big-btn-num{font-size:12px;opacity:0.9;display:block;margin-top:1px;}
+  .divider{font-size:12px;font-weight:600;color:#999;margin-bottom:10px;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+  @media(max-width:480px){.form-grid{grid-template-columns:1fr;}}
+  .field{display:flex;flex-direction:column;gap:5px;}
+  .field label{font-size:12px;font-weight:600;color:#555;}
+  .field input,.field select,.field textarea{font-family:'Segoe UI',Arial,sans-serif;font-size:13px;padding:10px 12px;border:1px solid #ddd;border-radius:8px;outline:none;transition:border-color 0.2s;width:100%;}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:#f0a500;}
+  .field textarea{resize:vertical;min-height:80px;}
+  .check-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:7px;margin-bottom:12px;}
+  .ci{display:flex;align-items:center;gap:8px;background:#f8f8f8;border:1px solid #e8e8e8;border-radius:8px;padding:8px 10px;cursor:pointer;font-size:12px;color:#333;transition:all 0.2s;}
+  .ci input[type=checkbox]{accent-color:#f0a500;width:14px;height:14px;margin:0;}
+  .ci:has(input:checked){border-color:#f0a500;background:rgba(240,165,0,0.07);color:#a06800;font-weight:600;}
+  .send-btn{width:100%;background:#f0a500;color:#fff;border:none;border-radius:10px;padding:14px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Segoe UI',Arial,sans-serif;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:6px;}
+  .send-btn:hover{background:#c17f00;}
+  .success-msg{display:none;background:#e6f9ed;color:#1a6e34;border:1px solid #a8e6bf;border-radius:8px;padding:12px 16px;font-size:13px;margin-top:10px;text-align:center;font-weight:600;}
+
+  /* FOOTER */
+  footer{background:#07101f;padding:2rem 1.5rem;text-align:center;}
+  .footer-name{font-size:16px;font-weight:700;color:#f0a500;margin-bottom:8px;}
+  .footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:10px;}
+  .footer-link{font-size:12px;color:rgba(255,255,255,0.55);}
+  .footer-copy{font-size:11px;color:rgba(255,255,255,0.3);}
+
+  @keyframes fadeD{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes fadeU{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(-3deg);}50%{transform:translateY(-14px) rotate(3deg);}}
+
+  /* MOBILE */
+  @media(max-width:600px){
+    .hero h1{font-size:28px;}
+    .slider-outer{padding:0 36px 1rem;}
+    .scard{flex:0 0 180px;}
+    nav{justify-content:center;}
+    .nav-brand{width:100%;text-align:center;padding:10px 0 4px;}
+    .nav-links{justify-content:center;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">⛏️ VMA EARTH MOVERS</div>
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#why">Why Us</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-logo">VMA Earth Movers</div>
+  <h1>Moving Earth,<br><span>Building Futures</span></h1>
+  <p class="hero-sub">Your trusted partner for earth excavation, sand, bricks, centring & concrete machinery — delivered across the region</p>
+  <div class="hero-badges">
+    <span class="badge">🚛 Tata Lorry</span>
+    <span class="badge">⛏️ Excavation</span>
+    <span class="badge">🪨 M Sand & P Sand</span>
+    <span class="badge">🧱 Bricks</span>
+    <span class="badge">🏗️ Centring</span>
+    <span class="badge">🔄 Concrete Machine</span>
+  </div>
+  <div class="hero-btns">
+    <a href="#contact" class="btn-gold">📞 Contact Us</a>
+    <a href="https://wa.me/918122165018?text=Hello%20VMA%20Earth%20Movers%2C%20I%20would%20like%20to%20enquire%20about%20your%20services." target="_blank" class="btn-out">💬 WhatsApp Now</a>
+  </div>
+  <div class="hero-float">🏗️</div>
+</section>
+
+<section class="sec" id="services" style="background:#fff;">
+  <div class="sec-title">Our <span>Services</span></div>
+  <div class="sec-sub">Complete earth moving & construction material solutions</div>
+  <div class="slider-outer">
+    <button class="sbtn l" onclick="slide(-1)">&#8249;</button>
+    <div class="slider-track" id="track">
+      <div class="scard"><span class="scard-icon">⛏️</span><div class="scard-title">Earth Excavation</div><div class="scard-desc">Professional earth cutting & evacuation for construction sites of all sizes.</div><span class="scard-tag">Heavy Duty</span></div>
+      <div class="scard"><span class="scard-icon">🪨</span><div class="scard-title">M Sand Supply</div><div class="scard-desc">High quality manufactured sand for plastering, masonry & concrete work.</div><span class="scard-tag">Premium Grade</span></div>
+      <div class="scard"><span class="scard-icon">🏖️</span><div class="scard-title">P Sand Supply</div><div class="scard-desc">River & plastering sand delivered fresh to your construction site.</div><span class="scard-tag">Fast Delivery</span></div>
+      <div class="scard"><span class="scard-icon">🚛</span><div class="scard-title">Tata Lorry Loads</div><div class="scard-desc">Bulk material transport via Tata lorry — sand, soil, debris & more.</div><span class="scard-tag">Bulk Orders</span></div>
+      <div class="scard"><span class="scard-icon">🧱</span><div class="scard-title">Bricks Supply</div><div class="scard-desc">Quality bricks for walls, foundations & all kinds of construction needs.</div><span class="scard-tag">Construction</span></div>
+      <div class="scard"><span class="scard-icon">🏗️</span><div class="scard-title">Centring Works</div><div class="scard-desc">Shuttering & centring material for slabs, beams & columns.</div><span class="scard-tag">Structural</span></div>
+      <div class="scard"><span class="scard-icon">🔄</span><div class="scard-title">Concrete Machine</div><div class="scard-desc">Concrete mixer machine on hire with operator support available.</div><span class="scard-tag">On Hire</span></div>
+    </div>
+    <button class="sbtn r" onclick="slide(1)">&#8250;</button>
+    <div class="dots" id="dots"></div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><span class="stat-num" data-t="500">0+</span><div class="stat-lbl">Projects Done</div></div>
+  <div class="stat"><span class="stat-num" data-t="12">0+</span><div class="stat-lbl">Years Experience</div></div>
+  <div class="stat"><span class="stat-num" data-t="7">0+</span><div class="stat-lbl">Services Offered</div></div>
+  <div class="stat"><span class="stat-num" data-t="200">0+</span><div class="stat-lbl">Happy Clients</div></div>
+</div>
+
+<section class="sec" id="why" style="background:#f8f8f8;">
+  <div class="sec-title">Why Choose <span>VMA?</span></div>
+  <div class="sec-sub">Trusted by builders and contractors across the region</div>
+  <div class="why-grid">
+    <div class="why-card"><div class="why-icon">⚡</div><div class="why-lbl">Fast Delivery</div><div class="why-sub">Same day delivery available</div></div>
+    <div class="why-card"><div class="why-icon">✅</div><div class="why-lbl">Quality Assured</div><div class="why-sub">Only premium grade materials</div></div>
+    <div class="why-card"><div class="why-icon">💰</div><div class="why-lbl">Best Pricing</div><div class="why-sub">Competitive rates always</div></div>
+    <div class="why-card"><div class="why-icon">📞</div><div class="why-lbl">Always Available</div><div class="why-sub">Mon–Sat, 8am–7pm</div></div>
+    <div class="why-card"><div class="why-icon">🚛</div><div class="why-lbl">Own Fleet</div><div class="why-sub">Tata lorries at your service</div></div>
+    <div class="why-card"><div class="why-icon">🏆</div><div class="why-lbl">Experienced Team</div><div class="why-sub">12+ years in business</div></div>
+  </div>
+</section>
+
+<section class="contact-sec" id="contact">
+  <div class="sec-title">Contact <span>VMA Earth Movers</span></div>
+  <div class="sec-sub">Call, WhatsApp or fill the form — we reply fast!</div>
+  <div class="contact-wrap">
+    <div class="contact-card">
+      <div class="contact-head">
+        <div class="contact-avatar">VMA</div>
+        <div>
+          <div class="contact-name">VMA Earth Movers</div>
+          <div class="contact-sub2">Earth Excavation · M Sand · P Sand · Bricks · Centring · Concrete Machine</div>
+        </div>
+      </div>
+      <div class="big-btns">
+        <a class="big-btn big-btn-call" href="tel:+918122165018">
+          <div class="big-btn-icon">📞</div>
+          <div>
+            <span class="big-btn-label">Call us now</span>
+            <span class="big-btn-num">+91 81221 65018</span>
+          </div>
+        </a>
+        <a class="big-btn big-btn-wa" href="https://wa.me/918122165018?text=Hello%20VMA%20Earth%20Movers%2C%20I%20would%20like%20to%20place%20an%20order%20or%20get%20a%20quote." target="_blank">
+          <div class="big-btn-icon">💬</div>
+          <div>
+            <span class="big-btn-label">WhatsApp us</span>
+            <span class="big-btn-num">+91 81221 65018</span>
+          </div>
+        </a>
+      </div>
+      <div class="divider">— Or send an enquiry below —</div>
+      <div class="form-grid">
+        <div class="field"><label>Your name *</label><input type="text" id="fn" placeholder="Full name"></div>
+        <div class="field"><label>Phone number *</label><input type="tel" id="fp" placeholder="+91 XXXXX XXXXX"></div>
+        <div class="field"><label>Location / Area</label><input type="text" id="fl" placeholder="Your city or area"></div>
+        <div class="field"><label>Quantity needed</label><input type="text" id="fq" placeholder="e.g. 5 loads, 100 bricks"></div>
+      </div>
+      <div class="divider" style="margin-bottom:8px;">Services required</div>
+      <div class="check-grid">
+        <label class="ci"><input type="checkbox" value="Earth excavation"> Earth excavation</label>
+        <label class="ci"><input type="checkbox" value="M Sand"> M Sand</label>
+        <label class="ci"><input type="checkbox" value="P Sand"> P Sand</label>
+        <label class="ci"><input type="checkbox" value="Tata lorry loads"> Tata lorry loads</label>
+        <label class="ci"><input type="checkbox" value="Bricks"> Bricks</label>
+        <label class="ci"><input type="checkbox" value="Centring works"> Centring works</label>
+        <label class="ci"><input type="checkbox" value="Concrete machine"> Concrete machine</label>
+        <label class="ci"><input type="checkbox" value="Other"> Other</label>
+      </div>
+      <div class="field" style="margin-bottom:12px;">
+        <label>Message / Details</label>
+        <textarea id="fm" placeholder="Site address, delivery date, or any questions..."></textarea>
+      </div>
+      <button class="send-btn" onclick="submitEnquiry()">💬 Send Enquiry via WhatsApp</button>
+      <div class="success-msg" id="sMsg">✅ Opening WhatsApp... VMA Earth Movers will reply to you shortly!</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name">⛏️ VMA Earth Movers</div>
+  <div class="footer-links">
+    <span class="footer-link">📞 +91 81221 65018</span>
+    <span class="footer-link">💬 WhatsApp: 8122165018</span>
+    <span class="footer-link">🕐 Mon–Sat, 8am–7pm</span>
+  </div>
+  <div class="footer-copy">© 2025 VMA Earth Movers · Earth Excavation · M Sand · P Sand · Bricks · Centring · Concrete Machine</div>
+</footer>
+
+<script>
+  let cur=0;
+  const track=document.getElementById('track');
+  const cards=track.querySelectorAll('.scard');
+  const total=cards.length;
+  const dotsEl=document.getElementById('dots');
+  const vis=window.innerWidth<600?1:window.innerWidth<900?2:3;
+
+  for(let i=0;i<total;i++){
+    const d=document.createElement('div');
+    d.className='dot'+(i===0?' active':'');
+    d.onclick=()=>goTo(i);
+    dotsEl.appendChild(d);
+  }
+
+  function goTo(idx){
+    cur=Math.max(0,Math.min(idx,total-vis));
+    const w=cards[0].offsetWidth+16;
+    track.style.transform='translateX(-'+(cur*w)+'px)';
+    dotsEl.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===cur));
+  }
+  function slide(dir){goTo(cur+dir);}
+  let ai=0;
+  setInterval(()=>{ai=(ai+1)%(total-vis+1);goTo(ai);},2800);
+
+  document.querySelectorAll('.stat-num').forEach(el=>{
+    const t=parseInt(el.getAttribute('data-t'));
+    let c=0;
+    const step=Math.ceil(t/40);
+    const obs=new IntersectionObserver(entries=>{
+      if(entries[0].isIntersecting){
+        const tm=setInterval(()=>{
+          c=Math.min(c+step,t);
+          el.textContent=c+'+';
+          if(c>=t)clearInterval(tm);
+        },40);
+        obs.disconnect();
+      }
+    });
+    obs.observe(el);
+  });
+
+  function submitEnquiry(){
+    const name=document.getElementById('fn').value.trim();
+    const phone=document.getElementById('fp').value.trim();
+    const loc=document.getElementById('fl').value.trim();
+    const qty=document.getElementById('fq').value.trim();
+    const msg=document.getElementById('fm').value.trim();
+    const services=[...document.querySelectorAll('.ci input:checked')].map(c=>c.value).join(', ');
+    if(!name||!phone){alert('Please enter your name and phone number.');return;}
+    const text=encodeURIComponent(
+      'Hello VMA Earth Movers!\n\n'+
+      'Name: '+name+'\n'+
+      'Phone: '+phone+'\n'+
+      (loc?'Location: '+loc+'\n':'')+
+      (services?'Services needed: '+services+'\n':'')+
+      (qty?'Quantity: '+qty+'\n':'')+
+      (msg?'Message: '+msg:'')
+    );
+    document.getElementById('sMsg').style.display='block';
+    setTimeout(()=>window.open('https://wa.me/918122165018?text='+text,'_blank'),600);
+  }
+</script>
+</body>
+</html>
